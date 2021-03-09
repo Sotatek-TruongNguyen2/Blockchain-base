@@ -1,0 +1,31 @@
+{
+  "apps": [
+    {
+      "name": "LemonadeCampaignFactoryCrawler",
+      "script": "bin/ethlink/CampaignFactoryLogCrawler.js",
+      "cwd": "dist",
+      "watch": false,
+      "args": "--contractName=CampaignFactory"
+    },
+    {
+      "name": "LemonadeCampaignCrawler",
+      "script": "bin/ethlink/CampaignLogCrawler.js",
+      "cwd": "dist",
+      "watch": false,
+      "args": "--contractName=Campaign"
+    },
+    {
+      "name": "LemonadeEthLinkCrawler",
+      "script": "bin/ethlink/ETHLinkEventLogCrawler.js",
+      "cwd": "dist",
+      "watch": false,
+      "args": "--contractName=ETHLink"
+    },
+    {
+      "name": "LemonadeWebhook",
+      "script": "bin/ethlink/WebhookWorker.js",
+      "cwd": "dist",
+      "watch": false
+    }
+  ]
+}
