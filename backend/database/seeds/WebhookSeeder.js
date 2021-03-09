@@ -21,10 +21,30 @@ class DatabaseSeeder {
     const webhooks = [
       {
         contract_name: Const.CONTRACTS.CAMPAIGN,
-        type: 'TokenPurchaseByEther',
-        url: 'webhook/transaction',
+        type: 'Staked',
+        url: 'webhook/staked',
       },
-      ];
+      {
+        contract_name: Const.CONTRACTS.CAMPAIGN,
+        type: 'UnstakedWithId',
+        url: 'webhook/unstaked',
+      },
+      {
+        contract_name: Const.CONTRACTS.CAMPAIGN,
+        type: 'UnstakedAll',
+        url: 'webhook/unstaked-all',
+      },
+      {
+        contract_name: Const.CONTRACTS.CAMPAIGN,
+        type: 'DistributeReward',
+        url: 'webhook/distribute-reward',
+      },
+      {
+        contract_name: Const.CONTRACTS.CAMPAIGN,
+        type: 'WithdrawedReward',
+        url: 'webhook/withdrawed-reward',
+      },
+    ];
     for (let i = 0; i < webhooks.length; i++) {
       let webhookObj = new Webhook();
       webhookObj.contract_name = webhooks[i].contract_name;
