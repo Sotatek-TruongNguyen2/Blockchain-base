@@ -329,7 +329,7 @@ contract StakBank is Ownable, Pausable {
         for(uint i = 0; i < _eStaker[user].length; i++) {
             Request memory request = _eStaker[user][i];
 
-            if (request.isUnstaked) {
+            if ((request.isUnstaked) || (numberDistribution < request.firstDistId)) {
                 continue;
             }
 
