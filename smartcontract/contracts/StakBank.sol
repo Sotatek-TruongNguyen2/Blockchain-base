@@ -387,8 +387,10 @@ contract StakBank is Ownable, Pausable {
     function _calcEthReward(address user, uint idStake) private view returns (uint) {
         Request memory request = _eStaker[user][idStake - 1];
         
-        uint stakedAmount = request.stakedAmount;
         uint firstDisId = request.firstDistId;
+        if (firstDisId > numberDistribution) return 0;
+
+        uint stakedAmount = request.stakedAmount;
         uint lastWithdrawDistId = request.lastWithdrawDistId;
 
         uint _cummVirtual = _detailDistribution[numberDistribution].cummVirtualEthUnitValuexTime
@@ -414,8 +416,10 @@ contract StakBank is Ownable, Pausable {
     function _calcUsdtReward(address user, uint idStake) private view returns (uint) {
         Request memory request = _eStaker[user][idStake - 1];
         
-        uint stakedAmount = request.stakedAmount;
         uint firstDisId = request.firstDistId;
+        if (firstDisId > numberDistribution) return 0;
+
+        uint stakedAmount = request.stakedAmount;
         uint lastWithdrawDistId = request.lastWithdrawDistId;
 
         uint _cummVirtual = _detailDistribution[numberDistribution].cummvirtualUsdtUnitValuexTime
