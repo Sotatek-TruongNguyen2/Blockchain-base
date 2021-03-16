@@ -55,7 +55,7 @@ contract StakBank is Ownable, Pausable {
 
     bytes4 private constant SELECTOR = bytes4(keccak256(bytes('transfer(address,uint256)')));
 
-    event UserStaked(address indexed user, uint amount, uint timestamp);
+    event UserStaked(address indexed user, uint indexed requestId, uint amount, uint timestamp);
     event UserUnstakedWithId(address indexed user, uint indexed requestId, uint ethReward, uint usdtReward);
     event UserUnstakedAll(address indexed user);
     event AdminDistributeReward(uint ethToReward, uint usdtToReward);
@@ -201,7 +201,7 @@ contract StakBank is Ownable, Pausable {
         address payable admin = address(uint160(address(owner)));
         admin.transfer(platformFee);
 
-        emit UserStaked(msg.sender, stakedAmount, current);
+        emit UserStaked(msg.sender, _eStaker[msg.sender].length, stakedAmount, current);
     }
 
     function unstakeWithId(uint idStake) public whenNotPaused {
